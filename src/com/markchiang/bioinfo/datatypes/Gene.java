@@ -31,10 +31,38 @@ public class Gene{
 	}
 
 	/**
+	 * if you define -2500~+500 as promoter, input 2500 as upstream and 500 as downstream
+	 * @param upstream
+	 * @param downstream
+	 * @return the start of promoter
+	 */
+	public Integer getPromoterStart(int upstream, int downstream) {
+		if (strand.equals("+")){
+			return start-upstream;
+		}else{
+			return end;
+		}
+	}
+
+	/**
 	 * @return the end
 	 */
 	public Integer getEnd() {
 		return end;
+	}
+
+	/**
+	 * if you define -2500~+500 as promoter, input 2500 as upstream and 500 as downstream
+	 * @param upstream
+	 * @param downstream
+	 * @return the end of promoter
+	 */
+	public Integer getPromoterEnd(int upstream, int downstream) {
+		if (strand.equals("+")){
+			return start;
+		}else{
+			return end+downstream;
+		}
 	}
 
 	/**

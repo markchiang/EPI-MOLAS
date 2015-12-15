@@ -47,10 +47,13 @@ public class EpiMolas {
 		}
 		
 		for (Gene gene : gtf.getGenes()) {
-			System.out.println(String.format("%s\t%.6f\t%.6f\t%.6f", 
+			System.out.println(String.format("%s\t%.6f\t%.6f\t%.6f\t%.6f\t%.6f\t%.6f", 
 					gene.toString(),
+					cgmap.mean("CG",gene.getChr(), gene.getPromoterStart(1000,0), gene.getPromoterEnd(1000,0)),
 					cgmap.mean("CG",gene.getChr(), gene.getStart(), gene.getEnd()),
+					cgmap.mean("CHG",gene.getChr(), gene.getPromoterStart(1000,0), gene.getPromoterEnd(1000,0)),
 					cgmap.mean("CHG",gene.getChr(), gene.getStart(), gene.getEnd()),
+					cgmap.mean("CHH",gene.getChr(), gene.getPromoterStart(1000,0), gene.getPromoterEnd(1000,0)),
 					cgmap.mean("CHH",gene.getChr(), gene.getStart(), gene.getEnd())
 					));
 		}

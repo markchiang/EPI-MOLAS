@@ -40,7 +40,7 @@ public class Gene{
 		if (strand.equals("+")){
 			return start-upstream;
 		}else{
-			return end;
+			return end-downstream;
 		}
 	}
 
@@ -59,9 +59,9 @@ public class Gene{
 	 */
 	public Integer getPromoterEnd(int upstream, int downstream) {
 		if (strand.equals("+")){
-			return start;
+			return start+downstream;
 		}else{
-			return end+downstream;
+			return end+upstream;
 		}
 	}
 

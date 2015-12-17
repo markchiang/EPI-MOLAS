@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import com.markchiang.bioinfo.datatypes.Gene;
-
 /**
  * @author markchiang
  *
@@ -31,16 +29,16 @@ public class BismarkMethylationExtractorReader {
 		String line;
 		while ((line=br.readLine())!=null){
 			String fields[] = line.split("\t");
-			String chr = fields[0];
+			String chr = UCSC2Ensembl(fields[0]);
 			Integer pos = Integer.parseInt(fields[1]);
 			String strand = fields[2];
-			Double methylated = Double.parseDouble(fields[3]);
-			Double unmethylated = Double.parseDouble(fields[4]);
+			int methylated = Integer.parseInt(fields[3]);
+			int unmethylated = Integer.parseInt(fields[4]);
 
 			String type = fields[5];
-			Double coverage = methylated + unmethylated;
+			Double coverage = (double)methylated + (double)unmethylated;
 			Double value = methylated / coverage;
-			if (coverage < threshold) continue;
+			if (coverage <= threshold) continue;
 			if (type.equals("CG")){
 				if (!chrMapCG.containsKey(chr)){
 				  chrMapCG.put(chr, new TreeMap<Integer,Number>());	
@@ -66,6 +64,20 @@ public class BismarkMethylationExtractorReader {
 		br.close();
 	}
 
+	/**
+	 * Converting human chromosome number from UCSC style to Ensembl style
+	 * @param chr
+	 * @return
+	 */
+	private String UCSC2Ensembl(String chr){
+		if (chr.startsWith("chr")||chr.startsWith("Chr")){
+			String answer = chr.substring(3,chr.length());
+			answer.replace("M", "Mt");
+			return answer;
+		}else{
+			return chr;
+		}
+	}
 	
 	/**
 	 * @param args
@@ -91,12 +103,12 @@ public class BismarkMethylationExtractorReader {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String bmerfilename = "example/test_data.fastq_bismark_bt2.CX_report.txt";
-		Integer threshold = 4;
+		String bmerfilename = "example/head_data.fastq_bismark_bt2.CX_report.txt";
+		Integer threshold = 0;
 		
 		BismarkMethylationExtractorReader bmer = null;
 		try {	
-		    bmer = new BismarkMethylationExtractorReader(bmerfilename,1);
+		    bmer = new BismarkMethylationExtractorReader(bmerfilename,threshold);
 		} catch (IOException e) {
 			System.err.println("Error reading Bismark file "+bmerfilename);
 			e.printStackTrace();

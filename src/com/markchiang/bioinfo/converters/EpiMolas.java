@@ -62,8 +62,8 @@ public class EpiMolas {
 		}
 
 		// test human data
-		String bmerfilename = "example/head_data.fastq_bismark_bt2.CX_report.txt";
-		String humangtffilename = "example/GRCh37.75.head.gtf";
+		String bmerfilename = "example/sample.fastq_bismark_bt2.CX_report.txt";
+		String humangtffilename = "example/sample.GRCh37.75.head.gtf";
 		threshold = 0;
 		
 		BismarkMethylationExtractorReader bmer = null;

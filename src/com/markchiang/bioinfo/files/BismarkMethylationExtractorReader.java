@@ -11,7 +11,7 @@ import java.util.TreeMap;
 
 /**
  * @author markchiang
- *
+ * @version 0.10
  */
 public class BismarkMethylationExtractorReader {
 	

@@ -13,7 +13,7 @@ import com.markchiang.bioinfo.datatypes.Gene;
 
 /**
  * @author markchiang -Dosgi.requiredJavaVersion=1.8
- *
+ * @version 0.10
  */
 public class GtfReader {
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * @author markchiang -Dosgi.requiredJavaVersion=1.8
- *
+ * @version 0.10
  */
 public class CGmap {
 	

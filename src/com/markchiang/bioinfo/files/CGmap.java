@@ -32,7 +32,7 @@ public class CGmap {
 		String line;
 		while ((line=br.readLine())!=null){
 			String fields[] = line.split("\t");
-			String chr = fields[0];
+			String chr = UCSC2Ensembl(fields[0]);
 			Integer pos = Integer.parseInt(fields[2]);
 			String type = fields[3];
 			Number value = Double.parseDouble(fields[5]);
@@ -61,6 +61,21 @@ public class CGmap {
 			}
 		}
 		br.close();
+	}
+	
+	/**
+	 * Converting human chromosome number from UCSC style to Ensembl style
+	 * @param chr
+	 * @return
+	 */
+	private String UCSC2Ensembl(String chr){
+		if (chr.startsWith("chr")||chr.startsWith("Chr")){
+			String answer = chr.substring(3,chr.length());
+			answer.replace("M", "Mt");
+			return answer;
+		}else{
+			return chr;
+		}
 	}
 
 	/**

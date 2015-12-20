@@ -93,7 +93,7 @@ public class CGmap {
 		else if (type.equals("CHH")) chrMap = chrMapCHH;
 		if (chrMap.get(chr)==null) 
 			return Double.NaN;
-		SortedMap<Integer,Number> subset = chrMap.get(chr).subMap(start, end);
+		SortedMap<Integer,Number> subset = chrMap.get(chr).subMap(start, end+1); //+1 is because toKey in subMap() is exclusive
 		double sum=0.0;
 		int count=0;
 		for (Number values : subset.values()) {

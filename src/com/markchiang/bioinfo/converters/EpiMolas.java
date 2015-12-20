@@ -120,9 +120,9 @@ public class EpiMolas {
 
 		if (args.length==5){	// optional arguments
 			try{
-				upstream = Integer.parseInt(args[3]);
-				downstream = Integer.parseInt(args[4]);
-				threshold = Integer.parseInt(args[5]);
+				upstream = Integer.parseInt(args[2]);
+				downstream = Integer.parseInt(args[3]);
+				threshold = Integer.parseInt(args[4]);
 			}catch (NumberFormatException nfe){
 				System.err.println("Error: upsteam, downstream, threshold arguments should be integers");
 				System.exit(1);

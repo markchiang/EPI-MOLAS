@@ -196,6 +196,8 @@ public class EpiMolas {
 						bmer.mean("CHH",gene.getChr(), gene.getStart(), gene.getEnd())
 						));
 			}				
+		}else{
+			System.err.println("Error: File type unsupported. Currently we support *.CGmap and *.CX_report.txt files.");
 		}
 	}
 }

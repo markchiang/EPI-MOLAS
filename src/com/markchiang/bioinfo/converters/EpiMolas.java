@@ -158,6 +158,8 @@ public class EpiMolas {
 				System.exit(1);
 			}
 
+			System.out.println("gene_id\tpmt_CG\tgene_CG\tpmt_CHG\tgene_CHG\tpmt_CHH\tgene_CHH");
+			
 			for (Gene gene : gtf.getGenes()) {
 				System.out.println(String.format("%s\t%.6f\t%.6f\t%.6f\t%.6f\t%.6f\t%.6f", 
 						gene.toString(),
